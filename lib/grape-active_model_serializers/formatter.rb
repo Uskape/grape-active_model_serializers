@@ -3,6 +3,11 @@ module Grape
     module ActiveModelSerializers
       class << self
         def call(resource, env)
+          
+          if resource.is_a?(String)
+          return resource
+         end
+         
           serializer = fetch_serializer(resource, env)
 
           if serializer
